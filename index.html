@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Validation by anetwork</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Validation</h1>
+          <h2>Laravel persian validation</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/anetwork/validation/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/anetwork/validation/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/anetwork/validation" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p><a href="https://travis-ci.org/anetwork/validation"><img src="https://travis-ci.org/anetwork/validation.svg?branch=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/anetwork/validation/?branch=master"><img src="https://scrutinizer-ci.com/g/anetwork/validation/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a></p>
+
+<h1>
+<a id="laravel-anetwork-validation" class="anchor" href="#laravel-anetwork-validation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Laravel Anetwork Validation</h1>
+
+<p>Laravel Anetwork Validation provides validation for Persian alphabet, number and etc.</p>
+
+<h2>
+<a id="requirement" class="anchor" href="#requirement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirement</h2>
+
+<ul>
+<li>Laravel 5.*</li>
+<li>PHP 5.5 &gt;=</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Laravel Anetwork Validation is open-sourced software licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a></p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+
+<p>Via Composer</p>
+
+<div class="highlight highlight-source-shell"><pre>$ composer require Anetwork/Validation</pre></div>
+
+<h2>
+<a id="config" class="anchor" href="#config" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Config</h2>
+
+<p>Add the following provider to providers part of config/app.php</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">Anetwork\Validation\</span><span class="pl-c1">PersianValidationServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span></span></pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>You can use it as Validator rules</p>
+
+<table>
+<thead>
+<tr>
+<th>Rules</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>persian_alpha</td>
+<td>Persian alphabet</td>
+</tr>
+<tr>
+<td>persian_num</td>
+<td>Persian numbers</td>
+</tr>
+<tr>
+<td>persian_alpha_num</td>
+<td>Persian alphabet and numbers</td>
+</tr>
+<tr>
+<td>iran_mobile</td>
+<td>Iran mobile number</td>
+</tr>
+<tr>
+<td>sheba_number</td>
+<td>Iran Sheba number</td>
+</tr>
+<tr>
+<td>melli_code</td>
+<td>Iran Melli code</td>
+</tr>
+<tr>
+<td>is_not_persian</td>
+<td>Doesn't accept persain alphabet and number</td>
+</tr>
+<tr>
+<td>is_array</td>
+<td>Check is array and array must be lesser and equal than parameter</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">Validator</span><span class="pl-k">::</span>make( <span class="pl-smi">$request</span><span class="pl-k">-&gt;</span>all(), [</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>persian_alpha|unique|max:25<span class="pl-pds">'</span></span>,    <span class="pl-c">// Validate Persian name, unique and max to 25 characters</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>age<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>persian_num|required<span class="pl-pds">'</span></span>,   <span class="pl-c">// Validate Persian numbers and check it's required</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>address<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>persian_alpha_num|min:10<span class="pl-pds">'</span></span>,   <span class="pl-c">// Validate persian alphabet &amp; numbers at least 10 digit accepted</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>mobile<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>iran_mobile<span class="pl-pds">'</span></span>,   <span class="pl-c">// Validate mobile number</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>sheba_number<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>sheba<span class="pl-pds">'</span></span>,    <span class="pl-c">// Validate sheba number of bank account</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>melli_code<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>melli_code<span class="pl-pds">'</span></span>,    <span class="pl-c">// Validate melli code number</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>latin_name<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>is_not_persian<span class="pl-pds">'</span></span> <span class="pl-c">// Validate latin name doesn't contain persian alphabet or number</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-s"><span class="pl-pds">'</span>your_array<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>is_array:2<span class="pl-pds">'</span></span> <span class="pl-c">// Validate your array variable and must be contian 2 member or lesser</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">]);</span></pre></div>
+        </section>
+
+        <footer>
+          Validation is maintained by <a href="https://github.com/anetwork">anetwork</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
